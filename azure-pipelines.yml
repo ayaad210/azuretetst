@@ -25,7 +25,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs: 
    command: test
-   projects: '**/*test/*.csproj'
+   projects: '**/*Test/*.csproj'
    arguments: 'dotnet build $(buildConfiguration)'
 - task: VSBuild@1
   inputs:
