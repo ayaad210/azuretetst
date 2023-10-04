@@ -27,6 +27,7 @@ steps:
    command: test
    projects: '**/*Test/*.csproj'
    arguments: 'dotnet build $(buildConfiguration)'
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
