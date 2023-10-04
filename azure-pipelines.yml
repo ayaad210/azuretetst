@@ -17,9 +17,6 @@ variables:
 steps:
 - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
 
 
 - task: DotNetCoreCLI@2
@@ -27,6 +24,11 @@ steps:
    command: test
    projects: '**/azuretetst.Test/azuretetst.Test/azuretetst.Test.csproj'
    arguments: 'dotnet build $(buildConfiguration)'
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
 
 - task: VSBuild@1
   inputs:
