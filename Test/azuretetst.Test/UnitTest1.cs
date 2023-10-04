@@ -11,7 +11,7 @@ namespace azuretetst.Test
             WeatherForecastController weatherForecastController = new WeatherForecastController();
 
             var val = weatherForecastController.Get();
-            Assert.Equal(5,val.Count());
+            Assert.Equal(5,val.Count());//test
         }
 
 
