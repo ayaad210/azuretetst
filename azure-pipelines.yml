@@ -18,16 +18,10 @@ steps:
 - task: NuGetToolInstaller@1
 
 
-
-- task: DotNetCoreCLI@2
-  inputs: 
-   command: test
-   projects: '**/azuretetst.Test/azuretetst.Test/azuretetst.Test.csproj'
-   arguments: 'dotnet build $(buildConfiguration)'
-
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+
 
 
 - task: VSBuild@1
@@ -36,3 +30,10 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+
+- task: DotNetCoreCLI@2
+  inputs: 
+   command: test
+   projects: '**/azuretetst.Test/azuretetst.Test/azuretetst.Test.csproj'
+   arguments: 'dotnet build $(buildConfiguration)'
