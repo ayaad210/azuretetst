@@ -23,6 +23,12 @@ steps:
     restoreSolution: '$(solution)'
 
 
+- task: DotNetCoreCLI@2
+  inputs: 
+   command: test
+   projects: '**/*Test/*.csproj'
+   arguments: 'dotnet build $(buildConfiguration)'
+
 
 - task: VSBuild@1
   inputs:
@@ -31,9 +37,3 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-
-- task: DotNetCoreCLI@2
-  inputs: 
-   command: test
-   projects: '**/azuretetst.Test/azuretetst.Test/azuretetst.Test.csproj'
-   arguments: 'dotnet build $(buildConfiguration)'
