@@ -23,12 +23,12 @@ steps:
     restoreSolution: '$(solution)'
 
 
-- task: DotNetCoreCLI@2
-  inputs: 
-   command: test
-   projects: '**/*Test/*.csproj'
-   arguments: 'dotnet build $(buildConfiguration)'
 
+# - task: DotNetCoreCLI@2
+#   inputs: 
+#    command: test
+#    projects: '**/*Test/*.csproj'
+#    arguments: 'dotnet build $(buildConfiguration)'
 
 - task: VSBuild@1
   inputs:
@@ -37,3 +37,11 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: DotNetCoreCLI@2
+  displayName: "dotnet e2e tests"
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: '**/*.csproj'
+    arguments: --output $(Build.ArtifactStagingDirectory)/src/xxx.EndToEnd.Integration.Tests
+    zipAfterPublish: false

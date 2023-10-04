@@ -14,10 +14,8 @@ namespace azuretetst.Test
             Assert.Equal(5,val.Count());
         }
 
-        [Fact]
-        public void Test1()
-        {
 
-        }
+ 
+ 
     }
 }
